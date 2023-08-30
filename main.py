@@ -42,4 +42,13 @@ while True:
     relay.value(0)
   
   utime.sleep(3)
+
+#control del led RGB
+r = Pin(16,Pin.OUT)
+g = Pin(17,Pin.OUT)
+b = Pin(18,Pin.OUT)
+
+b.on()
+r.on()
+g.on()
 """
