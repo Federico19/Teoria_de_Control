@@ -12,6 +12,11 @@ step_pin  = Pin(14, Pin.IN, Pin.PULL_UP)
 previous_value = True
 button_down = False
 
+# Variables del sensor  RGB
+r = Pin(16,Pin.OUT)
+g = Pin(17,Pin.OUT)
+b = Pin(18,Pin.OUT)
+
 while True:
 """
 # Control del encoder
@@ -44,10 +49,6 @@ while True:
   utime.sleep(3)
 
 #control del led RGB
-r = Pin(16,Pin.OUT)
-g = Pin(17,Pin.OUT)
-b = Pin(18,Pin.OUT)
-
 b.on()
 r.on()
 g.on()
