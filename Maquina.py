@@ -1,9 +1,9 @@
 from machine import Pin
-from time import gmtime
 
 class Maquina():
   def __init__(self):
     self.encendida = False
+    self.clock_inicial = None
     self.rgb_estado = [Pin(2, Pin.OUT, value = 0), Pin(3, Pin.OUT, value = 0), Pin(4, Pin.OUT, value = 0)]
     self.relay = Pin(16, Pin.OUT, value = 00)
     self.velocidad_actual = 1.0
@@ -59,16 +59,17 @@ class Maquina():
                   self.velocidad_actual += 0.1
           else:
               self.velocidad_actual = self.velocidad_defecto
-      print(self.velocidad_actual)
-    
-      self.velocidad_leds[0].off()
-      self.velocidad_leds[1].off()
-      self.velocidad_leds[2].off()
       
       if self.velocidad_actual < 1.7:
           self.velocidad_leds[0].on()
+          self.velocidad_leds[1].off()
+          self.velocidad_leds[2].off()
       else:
           if self.velocidad_actual < 2.5:
+              self.velocidad_leds[0].off()
               self.velocidad_leds[1].on()
+              self.velocidad_leds[2].off()
           else:
+              self.velocidad_leds[0].off()
+              self.velocidad_leds[1].off()
               self.velocidad_leds[2].on()
