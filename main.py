@@ -16,7 +16,6 @@ circuito = Circuito.Circuito(maquina)
 #Función ejecutándose en paralelo
 def Lectura():
     global circuito
-    global analizador
     while True:
         circuito.control_sensor_prox()       
 _thread.start_new_thread(Lectura, ())
@@ -28,9 +27,9 @@ def manejar_peticion(client, circuito):
   request_str = request_data.decode('utf-8')  # Decodificar los datos
 
   datos = {
-      "sensor_prox" : "No Detecto" if diccionario[0] == 1 else "Detecto",
-      "velocidad_maquina" : diccionario[1] * 5,
-      "estado_maquina" : "Encendida" if diccionario[2] else "Apagada"
+      "sensor_prox" : "No Detecto" if circuito.sensor_prox.value() else "Detecto",
+      "velocidad_maquina" : maquina.velocidad_actual,
+      "estado_maquina" : "Encendida" if maquina.encendida else "Apagada"
       }
     
   mensaje = json.dumps(datos)
