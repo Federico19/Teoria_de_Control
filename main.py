@@ -21,7 +21,7 @@ def Lectura():
 _thread.start_new_thread(Lectura, ())
 
 # Función para manejar las solicitudes
-def manejar_peticion(client, circuito):
+def manejar_peticion(client, circuito, maquina):
   # Recibir los datos de la solicitud
   request_data = cl.recv(1024)
   request_str = request_data.decode('utf-8')  # Decodificar los datos
