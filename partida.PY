@@ -1,3 +1,4 @@
+#Archivo con todos los demás archivos optimizados, con el fin de solucionar el problema de hilos en la Raspberry Pi Pico W
 from machine import Pin
 from time import sleep
 import utime
